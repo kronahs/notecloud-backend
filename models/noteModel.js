@@ -14,8 +14,22 @@ const noteSchema =  mongoose.Schema(
             type: String,
             required: false
         },
+        bulletPoints: {
+            type: [String],
+            default: [],
+        },
         category: {
             type: String
+        },
+        priority: {
+            type: String,
+            enum: ['high', 'low'],
+            default: 'low'
+        },
+        userId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User',
+            required: true
         }
     },
     {
