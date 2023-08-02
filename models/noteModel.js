@@ -15,8 +15,7 @@ const noteSchema =  mongoose.Schema(
             required: false
         },
         category: {
-            type: String,
-            enum: ['Projects', 'Business', 'Personal'] // Replace with your predefined categories
+            type: String
         }
     },
     {
