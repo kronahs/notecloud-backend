@@ -13,10 +13,14 @@ app.use(cors());
 app.use(bodyParser.json())
 
 app.use('/users', userRoutes);
-app.use('notes', noteRoutes);
+app.use('/notes', noteRoutes);
 
 const connectionString = process.env.MONGODB_URI;
 
+
+app.get('/', (req,res) =>{
+    res.send('Welcome to NoteCloud')
+});
 
 
 mongoose.connect(connectionString)
