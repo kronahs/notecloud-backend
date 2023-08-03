@@ -2,6 +2,7 @@ const express = require('express');
 const Note = require('../models/noteModel');
 const router = express.Router();
 
+//Get All notes
 router.get("/", async (req, res) => {
   try {
     const notes = await Note.find({});
@@ -10,6 +11,17 @@ router.get("/", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
+//Get one note
+router.get("/:id",async(req,res) => {
+  try {
+    const { id } = req.params;
+    const note = await Note.findById(id);
+    res.status(200).json(note);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+})
 
 // Create Note
 router.post("/", async (req, res) => {
